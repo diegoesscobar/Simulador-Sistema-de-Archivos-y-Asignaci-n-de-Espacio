@@ -1,0 +1,30 @@
+{
+  "name": "simulador-sistema-de-archivos-y-asignaci-n-de-espacio",
+  "version": "1.0.0",
+  "description": "AE4 – Sistemas Operativos\r Universidad de la Cuenca del Plata - 2026\r Integrantes: Benicio Gerardo Escobar - Diego Gerónimo Escobar",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "start": "tsx src/simulador.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diegoesscobar/Simulador-Sistema-de-Archivos-y-Asignaci-n-de-Espacio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/diegoesscobar/Simulador-Sistema-de-Archivos-y-Asignaci-n-de-Espacio/issues"
+  },
+  "homepage": "https://github.com/diegoesscobar/Simulador-Sistema-de-Archivos-y-Asignaci-n-de-Espacio#readme",
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}
