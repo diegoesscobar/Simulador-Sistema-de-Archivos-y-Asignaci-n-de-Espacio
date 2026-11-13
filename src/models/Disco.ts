@@ -1,4 +1,3 @@
-
 import { Bloque } from "./Bloque";
 
 export class Disco {
@@ -69,7 +68,47 @@ export class Disco {
     obtenerCapacidad(): number {
         return this.capacidad;
     }
+
+    obtenerFragmentacionExterna(): {
+        bloquesLibres: number;
+        segmentosLibres: number;
+        mayorSegmento: number;
+        indice: number;
+    } {
+        const bloquesLibres = this.obtenerBloquesLibres().length;
+
+        let segmentosLibres = 0;
+        let segmentoActual = 0;
+        let mayorSegmento = 0;
+
+        this.bloques.forEach(bloque => {
+            if (bloque.estaLibre()) {
+                segmentoActual++;
+
+                if (segmentoActual === 1) {
+                    segmentosLibres++;
+                }
+
+                mayorSegmento = Math.max(mayorSegmento, segmentoActual);
+            } else {
+                segmentoActual = 0;
+            }
+        });
+
+        const indice = bloquesLibres === 0
+            ? 0
+            : (1 - mayorSegmento / bloquesLibres) * 100;
+
+        return {
+            bloquesLibres,
+            segmentosLibres,
+            mayorSegmento,
+            indice
+        };
+    }
 }
+
+
 
 
 
