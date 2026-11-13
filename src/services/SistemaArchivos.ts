@@ -24,7 +24,6 @@ export class SistemaArchivos {
         );
 
         nuevoArchivo.asignarBloques(bloquesAsignados);
-
         this.archivos.set(nombre, nuevoArchivo);
     }
 
@@ -38,7 +37,22 @@ export class SistemaArchivos {
         const bloquesAsignados = archivo.obtenerBloquesAsignados();
 
         this.disco.liberarBloques(bloquesAsignados);
-
         this.archivos.delete(nombre);
     }
+
+    buscarArchivo(nombre: string): Archivo {
+        const archivo = this.archivos.get(nombre);
+
+        if (!archivo) {
+            throw new Error("El archivo no existe.");
+        }
+
+        return archivo;
+    }
+
+    obtenerArchivos(): Archivo[] {
+        return Array.from(this.archivos.values());
+    }
 }
+
+// Esta clase administra los archivos y coordina su espacio en disco.
