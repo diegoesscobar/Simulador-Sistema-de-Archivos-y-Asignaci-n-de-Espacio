@@ -24,3 +24,24 @@ function preguntar(pregunta: string): Promise<string> {
         interfaz.question(pregunta, resolve);
     });
 }
+
+async function ejecutarPrograma(): Promise<void> {
+    let continuar = true;
+
+    while (continuar) {
+        mostrarMenu();
+
+        const opcion = await preguntar("Seleccione una opción: ");
+
+        if (opcion === "6") {
+            continuar = false;
+            console.log("Finalizó el simulador.");
+        } else {
+            console.log("Opción seleccionada: " + opcion);
+        }
+    }
+
+    interfaz.close();
+}
+
+ejecutarPrograma();
