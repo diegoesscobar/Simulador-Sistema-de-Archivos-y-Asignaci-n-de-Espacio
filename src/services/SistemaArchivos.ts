@@ -72,8 +72,11 @@ export class SistemaArchivos {
     obtenerMapaDisco(): string[] {
         return this.disco.obtenerMapaDisco();
     }
-}
 
+    obtenerFragmentacionExterna() {
+        return this.disco.obtenerFragmentacionExterna();
+    }
+}
 
 
 
