@@ -106,6 +106,7 @@ async function ejecutarPrograma(): Promise<void> {
                     const capacidad = libres + ocupados;
                     const porcentaje = sistema.obtenerPorcentajeOcupacion();
                     const mapa = sistema.obtenerMapaDisco();
+                    const fragmentacion = sistema.obtenerFragmentacionExterna();
 
                     console.log("--- ESTADO DEL DISCO ---");
                     console.log("Capacidad total:", capacidad, "bloques");
@@ -114,6 +115,21 @@ async function ejecutarPrograma(): Promise<void> {
                     console.log(
                         "Porcentaje de ocupación:",
                         porcentaje.toFixed(2) + "%"
+                    );
+
+                    console.log("--- DISPERSIÓN DEL ESPACIO LIBRE ---");
+                    console.log(
+                        "Segmentos libres:",
+                        fragmentacion.segmentosLibres
+                    );
+                    console.log(
+                        "Mayor segmento libre:",
+                        fragmentacion.mayorSegmento,
+                        "bloques"
+                    );
+                    console.log(
+                        "Índice de dispersión:",
+                        fragmentacion.indice.toFixed(2) + "%"
                     );
 
                     console.log("--- MAPA DEL DISCO ---");
@@ -127,7 +143,7 @@ async function ejecutarPrograma(): Promise<void> {
 
                 case "6":
                     continuar = false;
-                    console.log("Cerrando simulador...");
+                    console.log("Finalizó el simulador.");
                     break;
 
                 default:
