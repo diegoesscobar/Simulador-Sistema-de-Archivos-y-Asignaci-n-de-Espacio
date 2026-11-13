@@ -1,3 +1,4 @@
+
 import { Disco } from "../models/Disco";
 import { Archivo } from "../models/Archivo";
 
@@ -26,16 +27,18 @@ export class SistemaArchivos {
 
         this.archivos.set(nombre, nuevoArchivo);
     }
+
+    eliminarArchivo(nombre: string): void {
+        const archivo = this.archivos.get(nombre);
+
+        if (!archivo) {
+            throw new Error("El archivo no existe.");
+        }
+
+        const bloquesAsignados = archivo.obtenerBloquesAsignados();
+
+        this.disco.liberarBloques(bloquesAsignados);
+
+        this.archivos.delete(nombre);
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-// Esta clase administra los archivos y coordina su asignación de espacio en disco.
