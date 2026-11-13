@@ -33,11 +33,32 @@ async function ejecutarPrograma(): Promise<void> {
 
         const opcion = await preguntar("Seleccione una opción: ");
 
-        if (opcion === "6") {
-            continuar = false;
-            console.log("Finalizó el simulador.");
-        } else {
-            console.log("Opción seleccionada: " + opcion);
+        try {
+            switch (opcion) {
+                case "1": {
+                    const nombre = await preguntar("Nombre del archivo: ");
+                    const tamanio = Number(
+                        await preguntar("Tamaño en bloques: ")
+                    );
+
+                    sistema.crearArchivo(nombre, tamanio);
+
+                    console.log("Archivo creado correctamente.");
+                    break;
+                }
+
+                case "6":
+                    continuar = false;
+                    console.log("Cerrando simulador...");
+                    break;
+
+                default:
+                    console.log("Opción todavía no implementada.");
+            }
+        } catch (error) {
+            if (error instanceof Error) {
+                console.log("Error:", error.message);
+            }
         }
     }
 
