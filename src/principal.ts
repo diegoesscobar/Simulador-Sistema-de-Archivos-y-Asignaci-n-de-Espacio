@@ -1,3 +1,4 @@
+
 import * as readline from "readline";
 import { SistemaArchivos } from "./services/SistemaArchivos";
 
@@ -16,4 +17,10 @@ function mostrarMenu(): void {
     console.log("4. Mostrar archivos");
     console.log("5. Consultar estado del disco");
     console.log("6. Salir");
+}
+
+function preguntar(pregunta: string): Promise<string> {
+    return new Promise(resolve => {
+        interfaz.question(pregunta, resolve);
+    });
 }
