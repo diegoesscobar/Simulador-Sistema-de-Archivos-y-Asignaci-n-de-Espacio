@@ -47,6 +47,17 @@ async function ejecutarPrograma(): Promise<void> {
                     break;
                 }
 
+                case "2": {
+                    const nombre = await preguntar(
+                        "Nombre del archivo a eliminar: "
+                    );
+
+                    sistema.eliminarArchivo(nombre);
+
+                    console.log("Archivo eliminado correctamente.");
+                    break;
+                }
+
                 case "6":
                     continuar = false;
                     console.log("Cerrando simulador...");
