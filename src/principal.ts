@@ -100,13 +100,38 @@ async function ejecutarPrograma(): Promise<void> {
                     break;
                 }
 
+                case "5": {
+                    const libres = sistema.obtenerBloquesLibres();
+                    const ocupados = sistema.obtenerBloquesOcupados();
+                    const capacidad = libres + ocupados;
+                    const porcentaje = sistema.obtenerPorcentajeOcupacion();
+                    const mapa = sistema.obtenerMapaDisco();
+
+                    console.log("--- ESTADO DEL DISCO ---");
+                    console.log("Capacidad total:", capacidad, "bloques");
+                    console.log("Bloques ocupados:", ocupados);
+                    console.log("Bloques libres:", libres);
+                    console.log(
+                        "Porcentaje de ocupación:",
+                        porcentaje.toFixed(2) + "%"
+                    );
+
+                    console.log("--- MAPA DEL DISCO ---");
+
+                    mapa.forEach(bloque => {
+                        console.log(bloque);
+                    });
+
+                    break;
+                }
+
                 case "6":
                     continuar = false;
                     console.log("Cerrando simulador...");
                     break;
 
                 default:
-                    console.log("Opción todavía no implementada.");
+                    console.log("Opción no válida. Intente nuevamente.");
             }
         } catch (error) {
             if (error instanceof Error) {
