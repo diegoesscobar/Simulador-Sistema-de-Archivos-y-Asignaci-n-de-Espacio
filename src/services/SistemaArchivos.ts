@@ -53,6 +53,35 @@ export class SistemaArchivos {
     obtenerArchivos(): Archivo[] {
         return Array.from(this.archivos.values());
     }
+
+    obtenerBloquesLibres(): number {
+        return this.disco.obtenerBloquesLibres().length;
+    }
+
+    obtenerBloquesOcupados(): number {
+        return this.disco.obtenerCapacidad() - this.obtenerBloquesLibres();
+    }
+
+    obtenerPorcentajeOcupacion(): number {
+        return (
+            this.obtenerBloquesOcupados() /
+            this.disco.obtenerCapacidad()
+        ) * 100;
+    }
+
+    obtenerMapaDisco(): string[] {
+        return this.disco.obtenerMapaDisco();
+    }
 }
+
+
+
+
+
+
+
+
+
+
 
 // Esta clase administra los archivos y coordina su espacio en disco.
