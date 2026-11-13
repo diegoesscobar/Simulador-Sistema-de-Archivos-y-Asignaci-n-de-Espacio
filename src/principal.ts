@@ -58,6 +58,27 @@ async function ejecutarPrograma(): Promise<void> {
                     break;
                 }
 
+                case "3": {
+                    const nombre = await preguntar(
+                        "Nombre del archivo a buscar: "
+                    );
+
+                    const archivo = sistema.buscarArchivo(nombre);
+
+                    console.log("--- INFORMACIÓN DEL ARCHIVO ---");
+                    console.log("Nombre:", archivo.obtenerNombre());
+                    console.log(
+                        "Tamaño:",
+                        archivo.obtenerTamanio(),
+                        "bloques"
+                    );
+                    console.log(
+                        "Bloques asignados:",
+                        archivo.obtenerBloquesAsignados().join(", ")
+                    );
+                    break;
+                }
+
                 case "6":
                     continuar = false;
                     console.log("Cerrando simulador...");
