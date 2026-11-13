@@ -67,15 +67,36 @@ async function ejecutarPrograma(): Promise<void> {
 
                     console.log("--- INFORMACIÓN DEL ARCHIVO ---");
                     console.log("Nombre:", archivo.obtenerNombre());
-                    console.log(
-                        "Tamaño:",
-                        archivo.obtenerTamanio(),
-                        "bloques"
-                    );
+                    console.log("Tamaño:", archivo.obtenerTamanio(), "bloques");
                     console.log(
                         "Bloques asignados:",
                         archivo.obtenerBloquesAsignados().join(", ")
                     );
+                    break;
+                }
+
+                case "4": {
+                    const archivos = sistema.obtenerArchivos();
+
+                    if (archivos.length === 0) {
+                        console.log("No hay archivos registrados.");
+                        break;
+                    }
+
+                    console.log("--- LISTA DE ARCHIVOS ---");
+
+                    archivos.forEach(archivo => {
+                        console.log("--------------------------");
+                        console.log("Nombre:", archivo.obtenerNombre());
+                        console.log("Tamaño:", archivo.obtenerTamanio(), "bloques");
+                        console.log(
+                            "Bloques asignados:",
+                            archivo.obtenerBloquesAsignados().join(", ")
+                        );
+                    });
+
+                    console.log("--------------------------");
+                    console.log("Total de archivos:", archivos.length);
                     break;
                 }
 
