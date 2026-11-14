@@ -1,10 +1,10 @@
-
 import { Disco } from "../models/Disco";
 import { Archivo } from "../models/Archivo";
 
 export class SistemaArchivos {
     private disco: Disco;
     private archivos: Map<string, Archivo>;
+    private siguienteNumeroInodo: number = 1;
 
     constructor(capacidadDisco: number) {
         this.disco = new Disco(capacidadDisco);
@@ -16,7 +16,11 @@ export class SistemaArchivos {
             throw new Error("Ya existe un archivo con ese nombre.");
         }
 
-        const nuevoArchivo = new Archivo(nombre, tamanio);
+        const nuevoArchivo = new Archivo(
+            nombre,
+            tamanio,
+            this.siguienteNumeroInodo
+        );
 
         const bloquesAsignados = this.disco.asignarBloques(
             tamanio,
@@ -25,6 +29,8 @@ export class SistemaArchivos {
 
         nuevoArchivo.asignarBloques(bloquesAsignados);
         this.archivos.set(nombre, nuevoArchivo);
+
+        this.siguienteNumeroInodo++;
     }
 
     eliminarArchivo(nombre: string): void {
@@ -77,6 +83,8 @@ export class SistemaArchivos {
         return this.disco.obtenerFragmentacionExterna();
     }
 }
+
+// Esta clase administra los archivos, sus inodos y el espacio del disco.
 
 
 

@@ -1,10 +1,10 @@
+import { Inodo } from "./Inodo";
 
 export class Archivo {
     private nombre: string;
-    private tamanio: number;
-    private bloquesAsignados: number[];
+    private inodo: Inodo;
 
-    constructor(nombre: string, tamanio: number) {
+    constructor(nombre: string, tamanio: number, numeroInodo: number) {
         if (nombre.trim() === "") {
             throw new Error("El nombre del archivo no puede estar vacío.");
         }
@@ -14,8 +14,7 @@ export class Archivo {
         }
 
         this.nombre = nombre;
-        this.tamanio = tamanio;
-        this.bloquesAsignados = [];
+        this.inodo = new Inodo(numeroInodo, tamanio);
     }
 
     obtenerNombre(): string {
@@ -23,24 +22,23 @@ export class Archivo {
     }
 
     obtenerTamanio(): number {
-        return this.tamanio;
+        return this.inodo.obtenerTamanio();
+    }
+
+    obtenerNumeroInodo(): number {
+        return this.inodo.obtenerNumero();
     }
 
     obtenerBloquesAsignados(): number[] {
-        return [...this.bloquesAsignados];
+        return this.inodo.obtenerBloquesAsignados();
     }
 
     asignarBloques(bloques: number[]): void {
-        if (bloques.length !== this.tamanio) {
-            throw new Error("La cantidad de bloques no coincide con el tamaño del archivo.");
-        }
-
-        this.bloquesAsignados = [...bloques];
+        this.inodo.asignarBloques(bloques);
     }
 }
 
-
-
+// Esta clase representa un archivo y mantiene asociado su inodo.
 
 
 

@@ -1,4 +1,3 @@
-
 import * as readline from "readline";
 import { SistemaArchivos } from "./services/SistemaArchivos";
 
@@ -67,6 +66,7 @@ async function ejecutarPrograma(): Promise<void> {
 
                     console.log("--- INFORMACIÓN DEL ARCHIVO ---");
                     console.log("Nombre:", archivo.obtenerNombre());
+                    console.log("Número de inodo:", archivo.obtenerNumeroInodo());
                     console.log("Tamaño:", archivo.obtenerTamanio(), "bloques");
                     console.log(
                         "Bloques asignados:",
@@ -88,6 +88,7 @@ async function ejecutarPrograma(): Promise<void> {
                     archivos.forEach(archivo => {
                         console.log("--------------------------");
                         console.log("Nombre:", archivo.obtenerNombre());
+                        console.log("Número de inodo:", archivo.obtenerNumeroInodo());
                         console.log("Tamaño:", archivo.obtenerTamanio(), "bloques");
                         console.log(
                             "Bloques asignados:",
